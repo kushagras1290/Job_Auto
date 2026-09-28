@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "instant-job-radar",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+  "triggers": {
+    "crons": [
+      "*/5 * * * *",
+      "*/30 * * * *",
+      "0 */6 * * *",
+      "30 3 * * *"
+    ]
+  },
+  "d1_databases": [{
+    "binding":"DB",
+    "database_name":"job_radar",
+    "database_id":"REPLACE_WITH_YOUR_D1_DATABASE_ID"
+  }],
+  "vars": {
+    "ALERT_MIN_SCORE": "70",
+    "PRIORITY_BATCH_LIMIT":"12",
+    "BROAD_BATCH_LIMIT":"12",
+    "DIGEST_TIMEZONE":"Asia/Kolkata",
+    "WORKER_PUBLIC_BASE_URL":"REPLACE_WITH_DEPLOYED_WORKER_URL"
+  }
+}
